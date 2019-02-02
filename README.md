@@ -8,7 +8,7 @@
 
 ## Native.SDK 项目结构
 
-![SDK结构](https://github.com/Jie2GG/Image/blob/master/NativeSDK(1).png?raw=true "SDK结构") <br/>
+![SDK结构](https://github.com/Jie2GG/Image/blob/master/NativeSDK(1).png "SDK结构") <br/>
 
 ## Native.SDK 开发环境
 
