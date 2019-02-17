@@ -42,6 +42,11 @@
 > 1. 对于 VisualBasic 项目不知道为什么安装高版本的 Fody 就编译不通过, 现 Fody 版本为 1.6.2, 所以暂时不支持无缝升级到 .Net Framewrok 4.5+
 
 ## Native.SDK 更新日志
+> 2019年02月16日 版本: V2.6.1
+
+	1. 优化 FodyWeavers.xml 配置, 为其加上注释. 方便开发者使用
+	2. 修复 IniValue 中 ToType 方法导致栈溢出的
+
 > 2019年01月27日 版本: V1.0.1
 
 	1. 移除 AnyCPU 配置项, 提升编译稳定性
