@@ -44,8 +44,8 @@
 ## Native.SDK 更新日志
 > 2019年02月20日 版本: V1.0.3
 
-	1. 更新 Native.Chsarp 项目的部分注释
-	2. 新增 Event_AppMain.Initialize 方法, 位于 "Native.Csharp.App.Event" 下, 用于当作本项目的初始化方法
+	1. 更新 Native.Basic 项目的部分注释
+	2. 新增 Event_AppMain.Initialize 方法, 位于 "Native.Basic.App.Event" 下, 用于当作本项目的初始化方法
 	3. 优化 Event_AppMain.Resolvebackcall 方法的执行, 默认将依据接口注入的类型全部实例化并取出分发到事件上 
 
 > 2019年02月16日 版本: V1.0.2
