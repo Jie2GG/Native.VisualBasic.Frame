@@ -42,6 +42,14 @@
 > 1. 对于 VisualBasic 项目不知道为什么安装高版本的 Fody 就编译不通过, 现 Fody 版本为 1.6.2, 所以暂时不支持无缝升级到 .Net Framewrok 4.5+
 
 ## Native.SDK 更新日志
+> 2019年02月26日 版本: V1.0.6
+
+	1. 默认注释 Event_GroupMessage 中 ReceiveGroupMessage 方法的部分代码, 防止因为机器人复读群消息而禁言
+
+> 2019年02月24日 版本: V1.0.5
+
+	1. 为 SDK 添加了提交版本号
+
 > 2019年02月20日 版本: V1.0.4
 
 	1. 还原 Event_AppMain.Resolvebackcall 方法的执行, 防止偶尔获取不到注入的类
