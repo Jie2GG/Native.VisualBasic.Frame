@@ -27,7 +27,8 @@ Namespace App.[Event]
 				Return      ' 因为 e.Handled = true 只是起到标识作用, 因此还需要手动返回
 			End If
 
-			CqApi.SendGroupMessage(e.FromGroup, CqApi.CqCode_At(e.FromQQ) & "你发送了这样的消息: " & e.Msg)
+			' 与2019年02月26日默认注释此行
+			' CqApi.SendGroupMessage(e.FromGroup, CqApi.CqCode_At(e.FromQQ) & "你发送了这样的消息: " & e.Msg)
 
 			e.Handled = True    ' 关于返回说明, 请参见 "Event_FriendMessage.ReceiveFriendMessage" 方法
 		End Sub
