@@ -42,6 +42,15 @@
 > 1. 对于 VisualBasic 项目不知道为什么安装高版本的 Fody 就编译不通过, 现 Fody 版本为 1.6.2, 所以暂时不支持无缝升级到 .Net Framewrok 4.5+
 
 ## Native.SDK 更新日志
+> 2019年03月03日 版本: V1.1.0
+
+	本次更新于相应 "酷Q" 官方 "易语言 SDK" 的迭代更新
+	
+	1. 新增 CqApi.ReceiveImage (用于获取消息中 "图片" 的绝对路径)
+	2. 新增 CqApi.GetSendRecordSupport (用于获取 "是否支持发送语音", 即用于区别 Air 和 Pro 版本之间的区别)
+	3. 新增 CqApi.GetSendImageSupport (用于获取 "是否支持发送图片", 即用于区别 Air 和 Pro 版本指间的区别)
+	4. 优化 CqApi.ReceiveRecord 方法, 使其获取到的语音路径为绝对路径, 而非相对路径
+	
 > 2019年02月26日 版本: V1.0.6
 
 	1. 默认注释 Event_GroupMessage 中 ReceiveGroupMessage 方法的部分代码, 防止因为机器人复读群消息而禁言
