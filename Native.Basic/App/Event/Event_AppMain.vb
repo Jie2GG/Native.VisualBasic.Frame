@@ -40,6 +40,7 @@ Namespace App.[Event]
 
 #Region "--IEvent_AppStatus--"
 			Dim appStatus As IEvent_AppStatus = container.Resolve(Of IEvent_AppStatus)()
+
 			AddHandler LibExport.CqStartup, AddressOf appStatus.CqStartup
 			AddHandler LibExport.CqExit, AddressOf appStatus.CqExit
 			AddHandler LibExport.AppEnable, AddressOf appStatus.AppEnable
@@ -48,12 +49,14 @@ Namespace App.[Event]
 
 #Region "--IEvent_DiscussMessage--"
 			Dim discussMessage As IEvent_DiscussMessage = container.Resolve(Of IEvent_DiscussMessage)()
+
 			AddHandler LibExport.ReceiveDiscussMessage, AddressOf discussMessage.ReceiveDiscussMessage
 			AddHandler LibExport.ReceiveDiscussPrivateMessage, AddressOf discussMessage.ReceiveDiscussPrivateMessage
 #End Region
 
 #Region "--IEvent_FriendMessage--"
 			Dim friendMessage As IEvent_FriendMessage = container.Resolve(Of IEvent_FriendMessage)()
+
 			AddHandler LibExport.ReceiveFriendAdd, AddressOf friendMessage.ReceiveFriednAddRequest
 			AddHandler LibExport.ReceiveFriendIncrease, AddressOf friendMessage.ReceiveFriendIncrease
 			AddHandler LibExport.ReceiveFriendMessage, AddressOf friendMessage.ReceiveFriendMessage
@@ -61,6 +64,7 @@ Namespace App.[Event]
 
 #Region "--IEvent_GroupMessage--"
 			Dim groupMessage As IEvent_GroupMessage = container.Resolve(Of IEvent_GroupMessage)()
+
 			AddHandler LibExport.ReceiveGroupMessage, AddressOf groupMessage.ReceiveGroupMessage
 			AddHandler LibExport.ReceiveGroupPrivateMessage, AddressOf groupMessage.ReceiveGroupPrivateMessage
 			AddHandler LibExport.ReceiveFileUploadMessage, AddressOf groupMessage.ReceiveGroupFileUpload
@@ -76,6 +80,7 @@ Namespace App.[Event]
 
 #Region "--IEvent_OtherMessage--"
 			Dim otherMessage As IEvent_OtherMessage = container.Resolve(Of IEvent_OtherMessage)()
+
 			AddHandler LibExport.ReceiveQnlineStatusMessage, AddressOf otherMessage.ReceiveOnlineStatusMessage
 #End Region
 
@@ -83,6 +88,13 @@ Namespace App.[Event]
 			' 在此分发已经注册的回调类型, 解析完毕后分发到导出的事件进行注册
 			Dim userExpand As IEvent_UserExpand = container.Resolve(Of IEvent_UserExpand)()
 			AddHandler UserExport.UserOpenConsole, AddressOf userExpand.OpenConsoleWindow
+		End Sub
+
+		''' <summary>
+		''' 当前回调事件的注册和分发完成之后将调用此方法
+		''' </summary>
+		Public Shared Sub Initialize()
+
 		End Sub
 	End Class
 End Namespace
