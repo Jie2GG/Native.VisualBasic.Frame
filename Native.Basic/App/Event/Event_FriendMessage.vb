@@ -29,7 +29,7 @@ Namespace App.[Event]
 		''' </summary>
 		''' <param name="sender">事件的触发对象</param>
 		''' <param name="e">事件的附加参数</param>
-		Public Sub ReceiveFriednAddRequest(ByVal sender As Object, ByVal e As FriendAddRequestEventArgs) Implements IEvent_FriendMessage.ReceiveFriednAddRequest
+		Public Sub ReceiveFriendAddRequest(ByVal sender As Object, ByVal e As FriendAddRequestEventArgs) Implements IEvent_FriendMessage.ReceiveFriendAddRequest
 			' 本子程序会在酷Q【线程】中被调用，请注意使用对象等需要初始化(CoInitialize,CoUninitialize)。
 			' 这里处理消息
 
