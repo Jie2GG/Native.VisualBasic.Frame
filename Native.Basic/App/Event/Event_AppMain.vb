@@ -57,7 +57,7 @@ Namespace App.[Event]
 #Region "--IEvent_FriendMessage--"
 			Dim friendMessage As IEvent_FriendMessage = container.Resolve(Of IEvent_FriendMessage)()
 
-			AddHandler LibExport.ReceiveFriendAdd, AddressOf friendMessage.ReceiveFriednAddRequest
+			AddHandler LibExport.ReceiveFriendAdd, AddressOf friendMessage.ReceiveFriendAddRequest
 			AddHandler LibExport.ReceiveFriendIncrease, AddressOf friendMessage.ReceiveFriendIncrease
 			AddHandler LibExport.ReceiveFriendMessage, AddressOf friendMessage.ReceiveFriendMessage
 #End Region
