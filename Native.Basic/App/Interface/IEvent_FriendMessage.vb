@@ -24,7 +24,7 @@ Namespace App.[Interface]
 		''' </summary>
 		''' <param name="sender">事件的触发对象</param>
 		''' <param name="e">事件的附加参数</param>
-		Sub ReceiveFriednAddRequest(ByVal sender As Object, ByVal e As FriendAddRequestEventArgs)
+		Sub ReceiveFriendAddRequest(ByVal sender As Object, ByVal e As FriendAddRequestEventArgs)
 
 		''' <summary>
 		''' Type=21 好友消息<para/>
