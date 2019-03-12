@@ -19,16 +19,26 @@ Namespace App.[Event]
 		''' <param name="container"></param>
 		Public Shared Sub Registbackcall(ByVal container As IUnityContainer)
 
+			' 当需要注册自己的回调类型时
+			' 在此写上需要注册的回调类型, 以 <接口, 实现类> 的方式进行注册, 同时需要给所有注入的类进行命名
+			' 
+			' 如果注入时没有提供名称, 则 SDK 在分发事件时将无法获取到对应的类型的实例!!!
+			' 如果注入时没有提供名称, 则 SDK 在分发事件时将无法获取到对应的类型的实例!!!
+			' 如果注入时没有提供名称, 则 SDK 在分发事件时将无法获取到对应的类型的实例!!!
+			' 重要的事情说三遍!!!
+			' 
+			' 下列代码演示的是如何将 SDK 预置的实现类注入到容器中
 #Region "--回调注入--"
-			container.RegisterType(Of IEvent_AppStatus, Event_AppStatus)()
-			container.RegisterType(Of IEvent_DiscussMessage, Event_DiscussMessage)()
-			container.RegisterType(Of IEvent_FriendMessage, Event_FriendMessage)()
-			container.RegisterType(Of IEvent_GroupMessage, Event_GroupMessage)()
-			container.RegisterType(Of IEvent_OtherMessage, Event_OtherMessage)()
+			container.RegisterType(Of IEvent_AppStatus, Event_AppStatus)("Default_AppStatus")
+			container.RegisterType(Of IEvent_DiscussMessage, Event_DiscussMessage)("Default_DiscussMessage")
+			container.RegisterType(Of IEvent_FriendMessage, Event_FriendMessage)("Default_FriendMessage")
+			container.RegisterType(Of IEvent_GroupMessage, Event_GroupMessage)("Default_GroupMessage")
+			container.RegisterType(Of IEvent_OtherMessage, Event_OtherMessage)("Default_OtherMessage")
 #End Region
 
 			' 当需要新注册回调类型时
 			' 在此写上需要注册的回调类型, 以 <接口, 实现类> 的方式进行注册
+			' 下列代码演示的是如何将 IEvent_UserExpand 的实现类 Event_UserExpand 类注入到容器中
 			container.RegisterType(Of IEvent_UserExpand, Event_UserExpand)()
 		End Sub
 
@@ -40,14 +50,20 @@ Namespace App.[Event]
 
 			' 当已经注入了新的回调类型时
 			' 在此分发已经注册的回调类型, 解析完毕后分发到导出的事件进行注册
+			' 下列代码演示如何将 IEvent_UserExpand 接口实例化并拿到对应的实例
 			Dim userExpand As IEvent_UserExpand = container.Resolve(Of IEvent_UserExpand)()
 			AddHandler UserExport.UserOpenConsole, AddressOf userExpand.OpenConsoleWindow
 		End Sub
 
 		''' <summary>
-		''' 当前回调事件的注册和分发完成之后将调用此方法
+		''' 初始化完毕
 		''' </summary>
 		Public Shared Sub Initialize()
+
+			' 当上述的 "注册" "分发" 完成之后, 将调用此方法进行最后的初始化
+			' 此方法执行的时间不宜过长, 过长的执行时间将会卡住 酷Q 加载应用, 可能会失败, 请开发者谨慎使用!!!
+			' 
+			' 注意: 当此方法执行完毕后, 应用并没有开始初始化, 仅仅只是加载到内存中而已, 切记!!!
 
 		End Sub
 	End Class
