@@ -10,6 +10,7 @@ Imports System.Runtime.InteropServices
 Imports System.Text
 Imports Native.Basic.App.Event
 Imports Native.Basic.App.Model
+Imports Native.Basic.App.Interface
 Imports Native.Csharp.Sdk.Cqp.Api
 Imports Native.Csharp.Sdk.Cqp.Enum
 Imports Native.Csharp.Tool
@@ -28,6 +29,54 @@ Namespace App.Core
 
 			' 程序开始调用方法进行注册
 			Event_AppMain.Registbackcall(Common.UnityContainer)
+
+#Region "IEvent_AppStatus"
+			' 解析 IEvent_AppStatus 接口
+			For Each appStatus In Common.UnityContainer.ResolveAll(Of IEvent_AppStatus)
+				AddHandler LibExport.CqStartup, AddressOf appStatus.CqStartup
+				AddHandler LibExport.CqExit, AddressOf appStatus.CqExit
+				AddHandler LibExport.AppEnable, AddressOf appStatus.AppEnable
+				AddHandler LibExport.AppDisable, AddressOf appStatus.AppDisable
+			Next
+#End Region
+
+#Region "--IEvent_DiscussMessage--"
+			' 解析 IEvent_DiscussMessage
+			For Each discussMessage In Common.UnityContainer.ResolveAll(Of IEvent_DiscussMessage)
+				AddHandler LibExport.ReceiveDiscussMessage, AddressOf discussMessage.ReceiveDiscussMessage
+				AddHandler LibExport.ReceiveDiscussPrivateMessage, AddressOf discussMessage.ReceiveDiscussPrivateMessage
+			Next
+#End Region
+
+#Region "--IEvent_FriendMessage--"
+			For Each friendMessage In Common.UnityContainer.ResolveAll(Of IEvent_FriendMessage)
+				AddHandler LibExport.ReceiveFriendAdd, AddressOf friendMessage.ReceiveFriendAddRequest
+				AddHandler LibExport.ReceiveFriendIncrease, AddressOf friendMessage.ReceiveFriendIncrease
+				AddHandler LibExport.ReceiveFriendMessage, AddressOf friendMessage.ReceiveFriendMessage
+			Next
+#End Region
+
+#Region "--IEvent_FriendMessage--"
+			For Each groupMessage In Common.UnityContainer.ResolveAll(Of IEvent_GroupMessage)
+				AddHandler LibExport.ReceiveGroupMessage, AddressOf groupMessage.ReceiveGroupMessage
+				AddHandler LibExport.ReceiveGroupPrivateMessage, AddressOf groupMessage.ReceiveGroupPrivateMessage
+				AddHandler LibExport.ReceiveFileUploadMessage, AddressOf groupMessage.ReceiveGroupFileUpload
+				AddHandler LibExport.ReceiveManageIncrease, AddressOf groupMessage.ReceiveGroupManageIncrease
+				AddHandler LibExport.ReceiveManageDecrease, AddressOf groupMessage.ReceiveGroupManageDecrease
+				AddHandler LibExport.ReceiveMemberJoin, AddressOf groupMessage.ReceiveGroupMemberJoin
+				AddHandler LibExport.ReceiveMemberInvitee, AddressOf groupMessage.ReceiveGroupMemberInvitee
+				AddHandler LibExport.ReceiveMemberLeave, AddressOf groupMessage.ReceiveGroupMemberLeave
+				AddHandler LibExport.ReceiveMemberRemove, AddressOf groupMessage.ReceiveGroupMemberRemove
+				AddHandler LibExport.ReceiveGroupAddApply, AddressOf groupMessage.ReceiveGroupAddApply
+				AddHandler LibExport.ReceiveGroupAddInvitee, AddressOf groupMessage.ReceiveGroupAddInvitee
+			Next
+#End Region
+
+#Region "--IEvent_OtherMessage--"
+			For Each otherMessage In Common.UnityContainer.ResolveAll(Of IEvent_OtherMessage)
+				AddHandler LibExport.ReceiveQnlineStatusMessage, AddressOf otherMessage.ReceiveOnlineStatusMessage
+			Next
+#End Region
 
 			' 注册完毕调用方法进行分发
 			Event_AppMain.Resolvebackcall(Common.UnityContainer)
@@ -60,6 +109,9 @@ Namespace App.Core
 		Private Shared Function Initialize(ByVal authCode As Int32) As Int32
 			' 酷Q获取应用信息后，如果接受该应用，将会调用这个函数并传递AuthCode。
 			Common.CqApi = New CqApi(authCode)
+
+			' AuthCode 传递完毕后将对象加入容器托管, 以便在其它项目中调用
+			Common.UnityContainer.RegisterInstance(Of CqApi)(Common.CqApi)
 
 			' 注册插件全局异常捕获回调, 用于捕获未处理的异常, 回弹给 酷Q 做处理
 			AddHandler AppDomain.CurrentDomain.UnhandledException, AddressOf CurrentDomain_UnhandledException
