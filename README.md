@@ -42,6 +42,38 @@
 > 1. 对于 VisualBasic 项目不知道为什么安装高版本的 Fody 就编译不通过, 现 Fody 版本为 1.6.2, 所以暂时不支持无缝升级到 .Net Framewrok 4.5+
 
 ## Native.SDK 更新日志
+> 2019年03月12日 版本: V1.1.1
+
+	1. 新增 Sex 枚举中未知性别, 值为 255
+	2. 优化 IOC 容器在获取对象时, 默认拉取所有注入的对象, 简化消息类接口的注入流程.
+	
+> 2019年03月03日 版本: V1.1.0
+
+	本次更新于响应 "酷Q" 官方 "易语言 SDK" 的迭代更新
+	
+	1. 新增 CqApi.ReceiveImage (用于获取消息中 "图片" 的绝对路径)
+	2. 新增 CqApi.GetSendRecordSupport (用于获取 "是否支持发送语音", 即用于区别 Air 和 Pro 版本之间的区别)
+	3. 新增 CqApi.GetSendImageSupport (用于获取 "是否支持发送图片", 即用于区别 Air 和 Pro 版本指间的区别)
+	4. 优化 CqApi.ReceiveRecord 方法, 使其获取到的语音路径为绝对路径, 而非相对路径
+	
+> 2019年02月26日 版本: V1.0.6
+
+	1. 默认注释 Event_GroupMessage 中 ReceiveGroupMessage 方法的部分代码, 防止因为机器人复读群消息而禁言
+
+> 2019年02月24日 版本: V1.0.5
+
+	1. 为 SDK 添加了提交版本号
+
+> 2019年02月20日 版本: V1.0.4
+
+	1. 还原 Event_AppMain.Resolvebackcall 方法的执行, 防止偶尔获取不到注入的类
+
+> 2019年02月20日 版本: V1.0.3
+
+	1. 更新 Native.Basic 项目的部分注释
+	2. 新增 Event_AppMain.Initialize 方法, 位于 "Native.Basic.App.Event" 下, 用于当作本项目的初始化方法
+	3. 优化 Event_AppMain.Resolvebackcall 方法的执行, 默认将依据接口注入的类型全部实例化并取出分发到事件上 
+
 > 2019年02月16日 版本: V1.0.2
 
 	1. 优化 FodyWeavers.xml 配置, 为其加上注释. 方便开发者使用
