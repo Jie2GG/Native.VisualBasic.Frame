@@ -42,6 +42,21 @@
 > 1. 对于 VisualBasic 项目不知道为什么安装高版本的 Fody 就编译不通过, 现 Fody 版本为 1.6.2, 所以暂时不支持无缝升级到 .Net Framewrok 4.5+
 
 ## Native.SDK 更新日志
+> 2019年04月06日 版本: V1.1.2
+	
+	1. 优化 Native.Csharp.Sdk 项目的结构, 修改类: CqApi 的命名空间
+	2. 新增 消息解析类: CqMsg
+	
+``` VB
+' 使用方法如下, 例如在群消息接受方法中
+Public Sub ReceiveGroupMessage(ByVal sender As Object, ByVal e As GroupMessageEventArgs) Implements IEvent_GroupMessage.ReceiveGroupMessage
+	Dim parseResult As CqMsg = CqMsg.Parse (e.Msg)		' 使用消息解析
+	Dim cqCodes As List(Of CqCode) = parseResult.Contents	' 获取消息中所有的 CQ码
+	
+	' 此时, 获取到的 cqCodes 中就包含此条消息所有的 CQ码
+End Sub
+```
+
 > 2019年03月12日 版本: V1.1.1
 
 	1. 新增 Sex 枚举中未知性别, 值为 255
