@@ -1,4 +1,4 @@
-﻿Imports Native.Csharp.Sdk.Cqp.Api
+﻿Imports Native.Csharp.Sdk.Cqp
 Imports Native.Csharp.Sdk.Cqp.Model
 Imports System
 Imports System.Collections.Generic
