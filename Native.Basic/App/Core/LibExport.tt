@@ -11,7 +11,7 @@ Imports System.Text
 Imports Native.Basic.App.Event
 Imports Native.Basic.App.Model
 Imports Native.Basic.App.Interface
-Imports Native.Csharp.Sdk.Cqp.Api
+Imports Native.Csharp.Sdk.Cqp
 Imports Native.Csharp.Sdk.Cqp.Enum
 Imports Native.Csharp.Tool
 Imports Unity
