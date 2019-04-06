@@ -7,7 +7,7 @@ Imports Unity
 Imports Native.Basic.App.Core
 Imports Native.Basic.App.[Interface]
 Imports Native.Basic.App.Model
-Imports Native.Csharp.Sdk.Cqp.Api
+Imports Native.Csharp.Sdk.Cqp
 
 Namespace App.[Event]
 

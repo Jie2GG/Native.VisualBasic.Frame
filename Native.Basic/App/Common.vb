@@ -1,4 +1,4 @@
-﻿Imports Native.Csharp.Sdk.Cqp.Api
+﻿Imports Native.Csharp.Sdk.Cqp
 Imports Unity
 
 Namespace App
@@ -19,11 +19,11 @@ Namespace App
 		''' <returns></returns>
 		Public Property IsRunning As Boolean
 
-		''' <summary>
-		''' 获取或设置当前 App 使用的 <see cref="Csharp.Sdk.Cqp.Api.CqApi"/> 接口实例
-		''' </summary>
-		''' <returns></returns>
-		Public Property CqApi As CqApi
+        ''' <summary>
+        ''' 获取或设置当前 App 使用的 <see cref="Csharp.Sdk.Cqp.CqApi"/> 接口实例
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property CqApi As CqApi
 
 		''' <summary>
 		''' 获取或设置当前 App 使用的依赖注入容器实例
