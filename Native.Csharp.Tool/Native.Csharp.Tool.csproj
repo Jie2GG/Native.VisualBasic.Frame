@@ -7,8 +7,8 @@
     <ProjectGuid>{9DB94CBF-6843-4EA3-9241-769124416FE9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Navite.Csharp.Tool</RootNamespace>
-    <AssemblyName>Navite.Csharp.Tool</AssemblyName>
+    <RootNamespace>Native.Csharp.Tool</RootNamespace>
+    <AssemblyName>Native.Csharp.Tool</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -18,6 +18,7 @@
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -55,6 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="IniConfig\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SQLite\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
