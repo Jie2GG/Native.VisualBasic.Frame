@@ -42,6 +42,12 @@
 > 1. 对于 VisualBasic 项目不知道为什么安装高版本的 Fody 就编译不通过, 现 Fody 版本为 1.6.2, 所以暂时不支持无缝升级到 .Net Framewrok 4.5+
 
 ## Native.SDK 更新日志
+> 2019年04月09日 版本: V1.1.3
+
+	1. 修复 CqMsg 类针对 VS2012 的兼容问题
+	2. 修复 HttpWebClient 类在增加 Cookies 时, 参数 "{0}" 为空字符串的异常
+	3. 新增 HttpWebClient 类属性 "KeepAlive", 允许指定 HttpWebClient 在做请求时是否建立持续型的 Internal 连接
+
 > 2019年04月06日 版本: V1.1.2
 	
 	1. 优化 Native.Csharp.Sdk 项目的结构, 修改类: CqApi 的命名空间
