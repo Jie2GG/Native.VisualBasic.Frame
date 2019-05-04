@@ -5,7 +5,7 @@ Imports System.Text
 
 Namespace App.Model
 	Public Class GroupAddRequestEventArgs
-		Inherits EventArgs
+		Inherits EventArgsBase
 
 		''' <summary>
 		''' 发送时间
@@ -20,12 +20,6 @@ Namespace App.Model
 		Public Property FromGroup As Long
 
 		''' <summary>
-		''' 来源QQ
-		''' </summary>
-		''' <returns></returns>
-		Public Property FromQQ As Long
-
-		''' <summary>
 		''' 附加消息
 		''' </summary>
 		''' <returns></returns>
@@ -36,11 +30,5 @@ Namespace App.Model
 		''' </summary>
 		''' <returns></returns>
 		Public Property Tag As String
-
-		''' <summary>
-		''' 获取或设置一个值，该值指示是否处理过此事件
-		''' </summary>
-		''' <returns></returns>
-		Public Property Handled As Boolean
 	End Class
 End Namespace
