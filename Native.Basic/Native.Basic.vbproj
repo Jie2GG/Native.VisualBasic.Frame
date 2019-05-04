@@ -137,6 +137,7 @@
     <Compile Include="App\Interface\IEvent_OtherMessage.vb" />
     <Compile Include="App\Interface\IEvent_UserExpand.vb" />
     <Compile Include="App\Model\DiscussMessageEventArgs.vb" />
+    <Compile Include="App\Model\EventArgsBase.vb" />
     <Compile Include="App\Model\FileUploadMessageEventArgs.vb" />
     <Compile Include="App\Model\FriendAddRequestEventArgs.vb" />
     <Compile Include="App\Model\FriendIncreaseEventArgs.vb" />
@@ -160,6 +161,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Repair\AssemblyHelper.vb" />
+    <Compile Include="Repair\Kernel32.vb" />
+    <Compile Include="Repair\LoadLibraryFlags.vb" />
+    <Compile Include="Repair\ReflectionHelper.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

@@ -54,17 +54,5 @@ Namespace App.[Event]
 			Dim userExpand As IEvent_UserExpand = container.Resolve(Of IEvent_UserExpand)()
 			AddHandler UserExport.UserOpenConsole, AddressOf userExpand.OpenConsoleWindow
 		End Sub
-
-		''' <summary>
-		''' 初始化完毕
-		''' </summary>
-		Public Shared Sub Initialize()
-
-			' 当上述的 "注册" "分发" 完成之后, 将调用此方法进行最后的初始化
-			' 此方法执行的时间不宜过长, 过长的执行时间将会卡住 酷Q 加载应用, 可能会失败, 请开发者谨慎使用!!!
-			' 
-			' 注意: 当此方法执行完毕后, 应用并没有开始初始化, 仅仅只是加载到内存中而已, 切记!!!
-
-		End Sub
 	End Class
 End Namespace
