@@ -1,11 +1,11 @@
-﻿Imports Native.Csharp.Sdk.Cqp
-Imports Native.Csharp.Sdk.Cqp.Model
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 Imports Native.Basic.App.Model
 Imports Native.Basic.App.[Interface]
+Imports Native.Csharp.Sdk.Cqp
+Imports Native.Csharp.Sdk.Cqp.Model
 
 Namespace App.[Event]
 	Public Class Event_GroupMessage

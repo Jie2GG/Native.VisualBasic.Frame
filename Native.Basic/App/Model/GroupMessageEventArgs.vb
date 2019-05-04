@@ -6,7 +6,7 @@ Imports System.Text
 
 Namespace App.Model
 	Public Class GroupMessageEventArgs
-		Inherits EventArgs
+		Inherits EventArgsBase
 
 		''' <summary>
 		''' 消息Id
@@ -19,12 +19,6 @@ Namespace App.Model
 		''' </summary>
 		''' <returns></returns>
 		Public Property FromGroup As Long
-
-		''' <summary>
-		''' 来源QQ
-		''' </summary>
-		''' <returns></returns>
-		Public Property FromQQ As Long
 
 		''' <summary>
 		''' 是否是匿名消息
@@ -43,11 +37,5 @@ Namespace App.Model
 		''' </summary>
 		''' <returns></returns>
 		Public Property Msg As String
-
-		''' <summary>
-		''' 获取或设置一个值，该值指示是否处理过此事件
-		''' </summary>
-		''' <returns></returns>
-		Public Property Handled As Boolean
 	End Class
 End Namespace
