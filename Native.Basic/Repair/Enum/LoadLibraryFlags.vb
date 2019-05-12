@@ -3,7 +3,7 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
 
-Namespace Repair
+Namespace Repair.Enum
 
 	<System.Flags>
 	Enum LoadLibraryFlags As UInteger
