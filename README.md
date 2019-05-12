@@ -78,7 +78,7 @@
 	
     1. 优化 Native.Csharp.Sdk 项目的结构, 修改类: CqApi 的命名空间
     2. 新增 消息解析类: CqMsg
-
+    
 ``` VB
 ' 使用方法如下, 例如在群消息接受方法中
 Public Sub ReceiveGroupMessage(ByVal sender As Object, ByVal e As GroupMessageEventArgs) Implements IEvent_GroupMessage.ReceiveGroupMessage
