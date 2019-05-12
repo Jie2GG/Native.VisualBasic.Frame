@@ -6,7 +6,7 @@ Imports System.Text
 Imports System.Threading.Tasks
 Imports System.Runtime.CompilerServices
 
-Namespace Repair
+Namespace Repair.Helper
 	Module ReflectionHelper
 		Public bindFlags As BindingFlags = BindingFlags.Instance Or BindingFlags.[Public] Or BindingFlags.NonPublic Or BindingFlags.[Static]
 
