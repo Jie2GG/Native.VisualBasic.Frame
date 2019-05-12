@@ -10,8 +10,10 @@ Imports System.Security.Cryptography
 Imports System.Text
 Imports System.Threading
 Imports System.Threading.Tasks
+Imports Native.Basic.Repair.Core
+Imports Native.Basic.Repair.Enum
 
-Namespace Repair
+Namespace Repair.Helper
 	Module AssemblyHelper
 		Private preloaded As List(Of String) = New List(Of String)()
 

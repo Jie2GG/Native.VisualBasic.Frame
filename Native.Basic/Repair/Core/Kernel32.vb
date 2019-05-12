@@ -3,8 +3,9 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Runtime.InteropServices
 Imports System.Text
+Imports Native.Basic.Repair.Enum
 
-Namespace Repair
+Namespace Repair.Core
 	Module Kernel32
 		<DllImport("kernel32.dll", SetLastError:=True, CharSet:=CharSet.Unicode)>
 		Function AddDllDirectory(ByVal lpPathName As String) As <MarshalAs(UnmanagedType.Bool)> Boolean
