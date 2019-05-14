@@ -27,6 +27,12 @@ Public Class ModuleInit
 			Return assembly
 		End If
 
+		If IsNothing(args.RequestingAssembly) Then
+			assembly = Assembly.GetExecutingAssembly()
+		Else
+			assembly = args.RequestingAssembly
+		End If
+
 		If String.IsNullOrEmpty(assembly.Location) Then
 			Dim uri As Uri = New Uri(assembly.CodeBase)
 

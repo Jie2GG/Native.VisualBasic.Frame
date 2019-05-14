@@ -16,19 +16,22 @@ Imports Unity
 Namespace App.Core
 	Public Class LibExport
 
-		''' <summary>
+''' <summary>
 		''' 静态构造函数, 初始化应用基础服务
 		''' </summary>
 		Shared Sub New()
+			' 初始化 Costura
+			CosturaUtility.Initialize ()
+
 			' 初始化依赖注入容器
 			Common.UnityContainer = New UnityContainer()
 
 			' 程序开始调用方法进行注册
 			Event_AppMain.Registbackcall(Common.UnityContainer)
-
+			
 			' 注册完毕调用方法进行分发
 			Event_AppMain.Resolvebackcall(Common.UnityContainer)
-
+			
 			' 分发应用内注册事件
 			ResolveAppbackcall()
 		End Sub

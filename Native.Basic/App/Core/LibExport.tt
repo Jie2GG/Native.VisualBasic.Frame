@@ -26,6 +26,9 @@ Namespace App.Core
 		''' 静态构造函数, 初始化应用基础服务
 		''' </summary>
 		Shared Sub New()
+			' 初始化 Costura
+			CosturaUtility.Initialize ()
+
 			' 初始化依赖注入容器
 			Common.UnityContainer = New UnityContainer()
 
