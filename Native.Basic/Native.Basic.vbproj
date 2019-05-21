@@ -153,7 +153,7 @@
     <Compile Include="Repair\Core\Kernel32.vb" />
     <Compile Include="Repair\Enum\LoadLibraryFlags.vb" />
     <Compile Include="Repair\Helper\ReflectionHelper.vb" />
-    <Compile Include="Repair\ModuleInit.vb" />
+    <Compile Include="Repair\ModuleInitializer.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
