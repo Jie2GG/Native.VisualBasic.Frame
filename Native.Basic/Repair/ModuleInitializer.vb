@@ -2,7 +2,7 @@
 Imports System.Reflection
 Imports Native.Basic.Repair.Helper
 
-Public Class ModuleInit
+Public Class ModuleInitializer
 
 	Public Shared Sub Initialize()
 		' 注册程序集加载失败事件, 用于 Fody 库重定向的补充
