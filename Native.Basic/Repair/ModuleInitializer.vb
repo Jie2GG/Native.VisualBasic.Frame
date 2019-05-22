@@ -16,11 +16,11 @@ Public Class ModuleInitializer
 	''' <param name="args"></param>
 	''' <returns></returns>
 	Private Shared Function CurrentDomain_AssemblyResolve(ByVal sender As Object, ByVal args As ResolveEventArgs) As Assembly
-		If args.Name.Contains(".resources") Then
-			Return Nothing
-		End If
+        If args.Name.Split(","c)(0).EndsWith(".resources") Then
+            Return Nothing
+        End If
 
-		Dim loadAssembly As Assembly() = AppDomain.CurrentDomain.GetAssemblies()
+        Dim loadAssembly As Assembly() = AppDomain.CurrentDomain.GetAssemblies()
 		Dim assembly As Assembly = loadAssembly.Where(Function(w) w.FullName.CompareTo(args.Name) = 0).LastOrDefault()
 
 		If assembly IsNot Nothing Then
