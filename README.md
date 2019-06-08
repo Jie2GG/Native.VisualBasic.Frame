@@ -40,6 +40,18 @@
 > 1. ~~对于 VisualBasic 项目不知道为什么安装高版本的 Fody 就编译不通过, 现 Fody 版本为 1.6.2, 所以暂时不支持无缝升级到 .Net Framewrok 4.5+~~(提供了4.5版本)
 
 ## Native.SDK 更新日志
+> 2019年06月07日 版本: V2.0.6.0607
+
+	由于 酷Q 停止对 Windows XP/Vista 系统的支持, 所以 Native.SDK 将停止继续使用 .Net 4.0 
+	并将此版本作为最终发布版归档处理, 下个版本开始仅对 .Net 4.5+ 更新
+
+	1. 修复 悬浮窗数据转换错误 (由 Pack -> BinaryWriter)
+	2. 优化 部分 Api 接口的数据处理效率 (由 UnPack -> BinaryReader)
+	3. 优化 分离 Native.Csharp.Tool 项目, 使 SDK 更轻量
+	4. 优化 调整 Native.Csharp.Tool 项目结构, 每个模块为一个根文件夹. 排除即可在编译时移除功能
+	5. 优化 新增 HttpTool (位于 Native.Csharp.Tool.Http)
+	6. 新增 SQLite 操作类 (不包含EF, 需要可自行添加), 完全移植自 System.Data.SQLite (.Net 4.0)
+
 > 2019年05月25日 版本: V2.0.5.0525
 
 	1. 修复 HttpWebClient 类在请求 Internet 资源时响应重定向的部分代码错误
