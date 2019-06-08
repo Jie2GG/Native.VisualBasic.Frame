@@ -179,10 +179,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App\Core\LibExport.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>LibExport1.vb</LastGenOutput>
-    </Content>
     <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -193,12 +189,13 @@
       <Project>{797eaebc-4d5b-4eef-87f4-a508fda2cb6a}</Project>
       <Name>Native.Csharp.Sdk</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Native.Csharp.Tool\Native.Csharp.Tool.csproj">
-      <Project>{9db94cbf-6843-4ea3-9241-769124416fe9}</Project>
-      <Name>Native.Csharp.Tool</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="App\Core\LibExport.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>LibExport1.vb</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <ImportGroup Label=".NET DllExport">
     <Import Project="$(SolutionDir)packages\DllExport.1.6.1\tools\net.r_eg.DllExport.targets" Condition="Exists('$(SolutionDir)packages\DllExport.1.6.1\tools\net.r_eg.DllExport.targets')" Label="8337224c9ad9e356" />
