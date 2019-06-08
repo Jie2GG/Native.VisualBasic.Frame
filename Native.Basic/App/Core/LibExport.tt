@@ -16,16 +16,20 @@ Imports Native.Basic.App.Interface
 Imports Native.Basic.Repair
 Imports Native.Csharp.Sdk.Cqp
 Imports Native.Csharp.Sdk.Cqp.Enum
-Imports Native.Csharp.Tool
+Imports Native.Csharp.Sdk.Cqp.Other
 Imports Unity
 
 Namespace App.Core
 	Public Class LibExport
+		
+		Private Shared Property DefaultEncoding As Encoding
 
-''' <summary>
+		''' <summary>
 		''' 静态构造函数, 初始化应用基础服务
 		''' </summary>
 		Shared Sub New()
+			DefaultEncoding = Encoding.GetEncoding("GB18030")
+
 			' 初始化 Costura
 			CosturaUtility.Initialize ()
 
@@ -296,7 +300,7 @@ Namespace App.Core
 			Dim args As PrivateMessageEventArgs = New PrivateMessageEventArgs()
 			args.MsgId = msgId
 			args.FromQQ = fromQQ
-			args.Msg = NativeConvert.ToPtrString(msg, Encoding.GetEncoding("GB18030"))
+			args.Msg = msg.ToString(DefaultEncoding)
 			args.Handled = False
 
 			If subType = 11 Then
@@ -320,7 +324,7 @@ Namespace App.Core
 			args.MsgId = msgId
 			args.FromGroup = fromGroup
 			args.FromQQ = fromQQ
-			args.Msg = NativeConvert.ToPtrString(msg, Encoding.GetEncoding("GB18030"))
+			args.Msg = msg.ToString(DefaultEncoding)
 			args.FromAnonymous = Nothing
 			args.IsAnonymousMsg = False
 			args.Handled = False
@@ -345,7 +349,7 @@ Namespace App.Core
 			args.MsgId = msgId
 			args.FromDiscuss = fromDiscuss
 			args.FromQQ = fromQQ
-			args.Msg = NativeConvert.ToPtrString(msg, Encoding.GetEncoding("GB18030"))
+			args.Msg = msg.ToString(DefaultEncoding)
 			args.Handled = False
 
 			If subType = 1 Then
@@ -360,7 +364,7 @@ Namespace App.Core
 		<DllExport(ExportName:="_eventGroupUpload", CallingConvention:=CallingConvention.StdCall)>
 		Private Shared Function EventGroupUpload(ByVal subType As Integer, ByVal sendTime As Integer, ByVal fromGroup As Long, ByVal fromQQ As Long, ByVal file As String) As Integer
 			Dim args As FileUploadMessageEventArgs = New FileUploadMessageEventArgs()
-			args.SendTime = NativeConvert.FotmatUnixTime(sendTime.ToString())
+			args.SendTime = sendTime.ToDateTime()
 			args.FromGroup = fromGroup
 			args.FromQQ = fromQQ
 			args.File = Common.CqApi.GetFile(file)
@@ -371,7 +375,7 @@ Namespace App.Core
 		<DllExport(ExportName:="_eventSystem_GroupAdmin", CallingConvention:=CallingConvention.StdCall)>
 		Private Shared Function EventSystemGroupAdmin(ByVal subType As Integer, ByVal sendTime As Integer, ByVal fromGroup As Long, ByVal beingOperateQQ As Long) As Integer
 			Dim args As GroupManageAlterEventArgs = New GroupManageAlterEventArgs()
-			args.SendTime = NativeConvert.FotmatUnixTime(sendTime.ToString())
+			args.SendTime = sendTime.ToDateTime()
 			args.FromGroup = fromGroup
 			args.BeingOperateQQ = beingOperateQQ
 			args.Handled = False
@@ -390,7 +394,7 @@ Namespace App.Core
 		<DllExport(ExportName:="_eventSystem_GroupMemberDecrease", CallingConvention:=CallingConvention.StdCall)>
 		Private Shared Function EventSystemGroupMemberDecrease(ByVal subType As Integer, ByVal sendTime As Integer, ByVal fromGroup As Long, ByVal fromQQ As Long, ByVal beingOperateQQ As Long) As Integer
 			Dim args As GroupMemberAlterEventArgs = New GroupMemberAlterEventArgs()
-			args.SendTime = NativeConvert.FotmatUnixTime(sendTime.ToString())
+			args.SendTime = sendTime.ToDateTime()
 			args.FromGroup = fromGroup
 			args.FromQQ = fromQQ
 			args.BeingOperateQQ = beingOperateQQ
@@ -411,7 +415,7 @@ Namespace App.Core
 		<DllExport(ExportName:="_eventSystem_GroupMemberIncrease", CallingConvention:=CallingConvention.StdCall)>
 		Private Shared Function EventSystemGroupMemberIncrease(ByVal subType As Integer, ByVal sendTime As Integer, ByVal fromGroup As Long, ByVal fromQQ As Long, ByVal beingOperateQQ As Long) As Integer
 			Dim args As GroupMemberAlterEventArgs = New GroupMemberAlterEventArgs()
-			args.SendTime = NativeConvert.FotmatUnixTime(sendTime.ToString())
+			args.SendTime = sendTime.ToDateTime()
 			args.FromGroup = fromGroup
 			args.FromQQ = fromQQ
 			args.BeingOperateQQ = beingOperateQQ
@@ -431,7 +435,7 @@ Namespace App.Core
 		<DllExport(ExportName:="_eventFriend_Add", CallingConvention:=CallingConvention.StdCall)>
 		Private Shared Function EventFriendAdd(ByVal subType As Integer, ByVal sendTime As Integer, ByVal fromQQ As Long) As Integer
 			Dim args As FriendIncreaseEventArgs = New FriendIncreaseEventArgs()
-			args.SendTime = NativeConvert.FotmatUnixTime(sendTime.ToString())
+			args.SendTime = sendTime.ToDateTime()
 			args.FromQQ = fromQQ
 			args.Handled = False
 
@@ -447,9 +451,9 @@ Namespace App.Core
 		<DllExport(ExportName:="_eventRequest_AddFriend", CallingConvention:=CallingConvention.StdCall)>
 		Private Shared Function EventRequestAddFriend(ByVal subType As Integer, ByVal sendTime As Integer, ByVal fromQQ As Long, ByVal msg As IntPtr, ByVal responseFlag As String) As Integer
 			Dim args As FriendAddRequestEventArgs = New FriendAddRequestEventArgs()
-			args.SendTime = NativeConvert.FotmatUnixTime(sendTime.ToString())
+			args.SendTime = sendTime.ToDateTime()
 			args.FromQQ = fromQQ
-			args.AppendMsg = NativeConvert.ToPtrString(msg, Encoding.GetEncoding("GB18030"))
+			args.AppendMsg = msg.ToString(DefaultEncoding)
 			args.Tag = responseFlag
 			args.Handled = False
 
@@ -465,10 +469,10 @@ Namespace App.Core
 		<DllExport(ExportName:="_eventRequest_AddGroup", CallingConvention:=CallingConvention.StdCall)>
 		Private Shared Function EventRequestAddGroup(ByVal subType As Integer, ByVal sendTime As Integer, ByVal fromGroup As Long, ByVal fromQQ As Long, ByVal msg As IntPtr, ByVal responseFlag As String) As Integer
 			Dim args As GroupAddRequestEventArgs = New GroupAddRequestEventArgs()
-			args.SendTime = NativeConvert.FotmatUnixTime(sendTime.ToString())
+			args.SendTime = sendTime.ToDateTime()
 			args.FromGroup = fromGroup
 			args.FromQQ = fromQQ
-			args.AppendMsg = NativeConvert.ToPtrString(msg, Encoding.GetEncoding("GB18030"))
+			args.AppendMsg = msg.ToString(DefaultEncoding)
 			args.Tag = responseFlag
 			args.Handled = False
 
